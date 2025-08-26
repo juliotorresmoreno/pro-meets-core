@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2017",
-    "types": [],
+    "types": ["node"],
     "sourceMap": false,
     "declaration": true,
     "declarationMap": true,
