@@ -1,4 +1,4 @@
-import { Language } from "~/utils/language";
+import { Language } from "../utils/language";
 
 export type Role = "admin" | "user";
 
