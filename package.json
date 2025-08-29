@@ -12,6 +12,6 @@
   "dependencies": {
     "@stripe/stripe-js": "^7.9.0",
     "@types/node": "^24.3.0",
-    "stripe": "^18.4.0"
+    "stripe": "^18.5.0"
   }
 }

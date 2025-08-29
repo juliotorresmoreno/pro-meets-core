@@ -1,9 +1,6 @@
 declare global {
   interface Window {
-    ENV?: {
-      PUBLIC_BASE_URL?: string;
-      PUBLIC_API_URL?: string;
-    };
+    ENV?: Record<string, string>;
   }
 }
 
