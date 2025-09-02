@@ -6,3 +6,4 @@ export * from "./OrganizationMember";
 export * from "./PaymentMethod";
 export * from "./Project";
 export * from "./User";
+export * from "./Post";
