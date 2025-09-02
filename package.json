@@ -1,11 +1,14 @@
 {
   "name": "@onnasoft/pro-meets-core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
