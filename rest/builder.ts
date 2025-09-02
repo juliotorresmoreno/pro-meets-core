@@ -67,9 +67,11 @@ export function queryBuilder(query: FindManyOptions<any>) {
     const order = query.orderBy
       .map((order) => {
         const key = Object.keys(order)[0];
+        if (!key) return "";
         const direction = order[key];
         return `${key}:${direction}`;
       })
+      .filter((item) => !!item)
       .join(",");
     params.append("order", order);
   }
