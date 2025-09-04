@@ -1,6 +1,12 @@
 import config from "../config";
 import { Post } from "../models";
-import { Create, FindManyOptions, FindOneOptions, queryBuilder, Update } from "../rest";
+import {
+  Create,
+  FindManyOptions,
+  FindOneOptions,
+  queryBuilder,
+  Update,
+} from "../rest";
 import { HTTPError, ValidationErrorResponse } from "../types";
 
 type GetPostParams = FindOneOptions<Post>;
@@ -11,17 +17,14 @@ export async function getPost(
   headers: HeadersInit = {}
 ): Promise<Post> {
   const queryString = params ? `?${queryBuilder(params)}` : "";
-  const response = await fetch(
-    `${config.apiUrl}/posts/${id}${queryString}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        ...headers,
-      },
-      credentials: "include",
-    }
-  );
+  const response = await fetch(`${config.apiUrl}/posts/${id}${queryString}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    credentials: "include",
+  });
 
   if (!response.ok) {
     const errorData: HTTPError = await response.json();
@@ -56,12 +59,13 @@ export async function getPosts(
   return data;
 }
 
-type CreatePostError =
-  | ValidationErrorResponse<Post>
-  | HTTPError;
+type CreatePostError = ValidationErrorResponse<Post> | HTTPError;
 
 export async function createPost(
-  payload: Create<Post>
+  payload: Omit<
+    Create<Post>,
+    "likes" | "comments" | "shares" | "timestamp" | "user" | "liked"
+  >
 ): Promise<Post> {
   const response = await fetch(`${config.apiUrl}/posts`, {
     method: "POST",
@@ -94,7 +98,10 @@ export async function createPost(
 
 export async function updatePost(
   id: string,
-  payload: Update<Post>
+  payload: Omit<
+    Update<Post>,
+    "likes" | "comments" | "shares" | "timestamp" | "user" | "liked"
+  >
 ): Promise<Post> {
   const response = await fetch(`${config.apiUrl}/posts/${id}`, {
     method: "PATCH",

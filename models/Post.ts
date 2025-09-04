@@ -4,7 +4,6 @@ export interface Post {
   id: string;
   user?: User;
   content: string;
-  imageUrl?: string;
   likes: number;
   comments: number;
   shares: number;
